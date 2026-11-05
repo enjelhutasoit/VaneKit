@@ -10,8 +10,17 @@ let package = Package(
     products: [
         .library(name: "VaneKit", targets: ["VaneKit"])
     ],
+    dependencies: [
+        .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.17.0")
+    ],
     targets: [
         .target(name: "VaneKit"),
-        .testTarget(name: "VaneKitTests", dependencies: ["VaneKit"])
+        .testTarget(
+            name: "VaneKitTests",
+            dependencies: [
+                "VaneKit",
+                .product(name: "SnapshotTesting", package: "swift-snapshot-testing")
+            ]
+        )
     ]
 )
