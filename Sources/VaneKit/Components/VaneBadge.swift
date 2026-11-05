@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+/// Visual variants of ``VaneBadge``.
 public enum VaneBadgeKind: CaseIterable, Sendable {
     case neutral
     case accent

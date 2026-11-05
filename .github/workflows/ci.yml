@@ -54,3 +54,29 @@ jobs:
         with:
           name: xcresult
           path: ${{ runner.temp }}/snapshots.xcresult
+
+  docs:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build documentation
+        run: |
+          UDID="$(bash scripts/ios-simulator-id.sh)"
+          xcodebuild docbuild \
+            -scheme VaneKit \
+            -destination "id=${UDID}" \
+            -derivedDataPath "${RUNNER_TEMP}/docs-derived" \
+            OTHER_DOCC_FLAGS="--warnings-as-errors"
+      - name: Collect archive
+        run: |
+          mkdir -p docs-out
+          archive="$(find "${RUNNER_TEMP}/docs-derived" -name '*.doccarchive' -type d | head -n 1)"
+          test -n "${archive}"
+          tar -czf docs-out/VaneKit.doccarchive.tar.gz \
+            -C "$(dirname "${archive}")" "$(basename "${archive}")"
+      - name: Upload documentation archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: docc
+          path: docs-out
+          if-no-files-found: error

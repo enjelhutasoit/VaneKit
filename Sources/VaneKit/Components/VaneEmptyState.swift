@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+/// The optional call to action of a ``VaneEmptyState``.
 public struct VaneEmptyStateAction {
     let title: String
     let handler: @MainActor () -> Void

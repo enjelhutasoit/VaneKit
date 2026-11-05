@@ -4,7 +4,13 @@
 
 import SwiftUI
 
+/// Resolves ``VaneColorRole`` values to SwiftUI colors.
 public enum VaneColor {
+    /// The color for `role` in the given color scheme.
+    ///
+    /// - Parameters:
+    ///   - role: The semantic role.
+    ///   - scheme: Usually the value of `@Environment(\.colorScheme)`.
     public static func color(_ role: VaneColorRole, for scheme: ColorScheme) -> Color {
         let palette: VaneColorPalette = scheme == .dark ? .dark : .light
         return Color(palette[role])

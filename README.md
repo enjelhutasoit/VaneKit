@@ -7,7 +7,13 @@ DocC documentation, snapshot tests and a SemVer Swift Package Manager release fl
 
 Available: tokens (color, spacing, typography, radius) and components:
 `VaneButtonStyle`, `VaneTextField`, `VaneBadge`, `VaneCard`, `VaneListRow`, `VaneEmptyState`.
-Snapshot tests, DocC and the release flow are not implemented yet. See the roadmap below.
+The release flow is not implemented yet. See the roadmap below.
+
+## Documentation
+
+DocC sources live in `Sources/VaneKit/VaneKit.docc`. In Xcode, open `Package.swift`
+and choose Product > Build Documentation. 
+CI uploads the DocC archive as a .tar.gz inside the docc artifact
 
 ## Clean-room statement
 
