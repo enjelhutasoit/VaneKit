@@ -55,7 +55,7 @@ private struct VaneButtonBody: View {
         let shape = RoundedRectangle(cornerRadius: VaneRadius.md)
         configuration.label
             .font(VaneTextStyle.headline.font)
-            .padding(.horizontal, VaneSpacing.md)
+            .padding(.horizontal, VaneSpacing.xs)
             .frame(minWidth: VaneSize.minimumTapTarget, minHeight: VaneSize.minimumTapTarget)
             .vaneColors(kind.colors, in: shape)
             .contentShape(shape)

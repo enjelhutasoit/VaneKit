@@ -17,9 +17,11 @@ public struct VaneCard<Content: View>: View {
     }
 
     public var body: some View {
-        content
-            .padding(VaneSpacing.md)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .vaneColors(Self.colors, in: RoundedRectangle(cornerRadius: VaneRadius.lg))
+        VStack(alignment: .leading, spacing: VaneSpacing.xs) {
+            content
+        }
+        .padding(VaneSpacing.md)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .vaneColors(Self.colors, in: RoundedRectangle(cornerRadius: VaneRadius.lg))
     }
 }

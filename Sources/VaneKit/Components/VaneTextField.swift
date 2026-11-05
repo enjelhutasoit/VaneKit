@@ -35,7 +35,7 @@ public struct VaneTextField: View {
             TextField("", text: $text)
                 .font(VaneTextStyle.body.font)
                 .focused($isFocused)
-                .padding(.horizontal, VaneSpacing.sm)
+                .padding(.horizontal, VaneSpacing.xs)
                 .frame(minHeight: VaneSize.minimumTapTarget)
                 .foregroundStyle(VaneColor.color(.textPrimary, for: colorScheme))
                 .background(shape.fill(VaneColor.color(.surface, for: colorScheme)))

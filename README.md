@@ -21,6 +21,12 @@ employer or client were used. Design decisions are recorded in `docs/adr`.
 Xcode > File > Add Package Dependencies > `https://github.com/enjelhutasoit/VaneKit`
 and select a tag. Requires iOS 17 / macOS 14, Swift 6.
 
+## Testing
+
+- `swift test` runs logic and contrast tests on macOS.
+- Snapshot tests run on the iOS Simulator in CI only. References are recorded
+  from CI artifacts; see `docs/adr/0005-snapshot-policy.md`.
+
 ## Roadmap
 
 1. Tokens: color, spacing, typography, radius

@@ -27,3 +27,30 @@ jobs:
         run: swift build
       - name: Test
         run: swift test
+
+  snapshots:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain
+        run: xcodebuild -version
+      - name: Test on iOS Simulator
+        run: |
+          UDID="$(bash scripts/ios-simulator-id.sh)"
+          xcodebuild test \
+            -scheme VaneKit \
+            -destination "id=${UDID}" \
+            -resultBundlePath "${RUNNER_TEMP}/snapshots.xcresult"
+      - name: Upload snapshot images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: snapshots
+          path: Tests/VaneKitTests/__Snapshots__
+          if-no-files-found: ignore
+      - name: Upload result bundle
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcresult
+          path: ${{ runner.temp }}/snapshots.xcresult
