@@ -1,52 +1,85 @@
-# VaneKit
+ 
+<p align="center">
+  <img src="assets/vanekit-logo-medium-512.png" alt="VaneKit logo" width="220">
+</p>
 
-A clean-room SwiftUI mini design system: design tokens, accessible components,
-DocC documentation, snapshot tests and a SemVer Swift Package Manager release flow.
+<h1 align="center">VaneKit</h1>
 
-## Status
+<p align="center">A focused SwiftUI design system for consistent, accessible interfaces.</p>
 
-Available: tokens (color, spacing, typography, radius) and components:
-`VaneButtonStyle`, `VaneTextField`, `VaneBadge`, `VaneCard`, `VaneListRow`, `VaneEmptyState`.
-Current version: see Releases.
+<p align="center">
+  <a href="https://github.com/enjelhutasoit/VaneKit/actions/workflows/ci.yml"><img src="https://github.com/enjelhutasoit/VaneKit/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+  <a href="https://github.com/enjelhutasoit/VaneKit/releases/latest"><img src="https://img.shields.io/github/v/release/enjelhutasoit/VaneKit?label=release" alt="Latest release"></a>
+  <a href="Package.swift"><img src="https://img.shields.io/badge/Swift-6.0-F05138?logo=swift&logoColor=white" alt="Swift 6.0"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/enjelhutasoit/VaneKit" alt="License"></a>
+</p>
 
-## Versioning
+VaneKit brings **semantic design tokens** and **reusable SwiftUI components** into one versioned Swift package. Start with a few tokens, adopt components as needed, and keep your app's look consistent across screens.
 
-VaneKit follows Semantic Versioning. See `docs/versioning.md` for the rules and
-deprecation policy, `docs/releasing.md` for the release steps, and `CHANGELOG.md`.
+## What's inside
 
+| | Included |
+|---|---|
+| **Design tokens** | Semantic colors (light/dark), spacing, typography, corner radius |
+| **Components** | `VaneButtonStyle`, `VaneTextField`, `VaneBadge`, `VaneCard`, `VaneListRow`, `VaneEmptyState` |
+| **Quality checks** | Contrast tests, iOS Simulator snapshot tests, DocC documentation |
+
+## Get started
+
+**Requirements:** iOS 17+ · macOS 14+ · Swift 6.0
+
+In Xcode, choose **File → Add Package Dependencies**, then enter:
+
+```text
+https://github.com/enjelhutasoit/VaneKit
+```
+
+Select version **1.0.0** or later within a compatible major version. For a Swift package manifest:
+
+```swift
+.package(url: "https://github.com/enjelhutasoit/VaneKit", from: "1.0.0")
+```
+
+### Use a component
+
+```swift
+import SwiftUI
+import VaneKit
+
+struct ProfileView: View {
+    @State private var name = ""
+
+    var body: some View {
+        VaneCard {
+            VaneTextField("Name", text: $name)
+            Button("Save") { /* Handle save */ }
+                .buttonStyle(VaneButtonStyle(.primary))
+        }
+        .padding(VaneSpacing.md)
+    }
+}
+```
+
+Components accept caller-provided text; localize strings in your app. See the [adoption guide](Sources/VaneKit/VaneKit.docc/AdoptingVaneKit.md) for a complete example with semantic background colors.
 
 ## Documentation
 
-DocC sources live in `Sources/VaneKit/VaneKit.docc`. In Xcode, open `Package.swift`
-and choose Product > Build Documentation. 
-CI uploads the DocC archive as a .tar.gz inside the docc artifact
+- [Adopting VaneKit](Sources/VaneKit/VaneKit.docc/AdoptingVaneKit.md) — installation, example, and rollout steps
+- [Tokens](Sources/VaneKit/VaneKit.docc/Tokens.md) and [Components](Sources/VaneKit/VaneKit.docc/Components.md) — available building blocks
+- [Accessibility](Sources/VaneKit/VaneKit.docc/Accessibility.md) — accessibility decisions and coverage
 
-## Clean-room statement
+In Xcode, open `Package.swift` and choose **Product → Build Documentation**. CI also uploads a DocC archive as the `docc` artifact.
 
-Names, token values and APIs were designed
-independently from public sources (Apple Human Interface Guidelines, WCAG).
-No source code, token values, component APIs or documentation from any
-employer or client were used. Design decisions are recorded in `docs/adr`.
+## Tested and versioned
 
-## Installation (after the first release)
+`swift test` covers package logic and color contrast. CI additionally runs iOS Simulator snapshots, builds DocC with warnings treated as errors, and checks release scripts.
 
-Xcode > File > Add Package Dependencies > `https://github.com/enjelhutasoit/VaneKit`
-and select a tag. Requires iOS 17 / macOS 14, Swift 6.
+Releases follow [Semantic Versioning](docs/versioning.md). See the [changelog](CHANGELOG.md) and [releases](https://github.com/enjelhutasoit/VaneKit/releases) for changes.
 
-## Testing
+## Built independently
 
-- `swift test` runs logic and contrast tests on macOS.
-- Snapshot tests run on the iOS Simulator in CI only. References are recorded
-  from CI artifacts; see `docs/adr/0005-snapshot-policy.md`.
-
-## Roadmap
-
-1. Tokens: color, spacing, typography, radius
-2. Components: button, text field, badge, card, list row, empty state
-3. Snapshot and accessibility tests
-4. DocC catalog and adoption guide
-5. Tag-driven SemVer release (v1.0.0)
+VaneKit is clean-room work informed by public Apple Human Interface Guidelines and WCAG guidance. No employer or client code, token values, or component APIs were reused. Design decisions are documented in [architecture decision records](docs/adr).
 
 ## License
 
-MIT
+[MIT](LICENSE)
