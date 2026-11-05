@@ -11,6 +11,7 @@ let package = Package(
         .library(name: "VaneKit", targets: ["VaneKit"])
     ],
     targets: [
-        .target(name: "VaneKit")
+        .target(name: "VaneKit"),
+        .testTarget(name: "VaneKitTests", dependencies: ["VaneKit"])
     ]
 )
