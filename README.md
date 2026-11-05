@@ -5,7 +5,8 @@ DocC documentation, snapshot tests and a SemVer Swift Package Manager release fl
 
 ## Status
 
-Bootstrap only. No tokens or components yet. See the roadmap below.
+Tokens available: color roles (light/dark, contrast-tested), spacing, typography, radius.
+Components are not implemented yet. See the roadmap below.
 
 ## Clean-room statement
 
