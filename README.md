@@ -7,7 +7,13 @@ DocC documentation, snapshot tests and a SemVer Swift Package Manager release fl
 
 Available: tokens (color, spacing, typography, radius) and components:
 `VaneButtonStyle`, `VaneTextField`, `VaneBadge`, `VaneCard`, `VaneListRow`, `VaneEmptyState`.
-The release flow is not implemented yet. See the roadmap below.
+Current version: see Releases.
+
+## Versioning
+
+VaneKit follows Semantic Versioning. See `docs/versioning.md` for the rules and
+deprecation policy, `docs/releasing.md` for the release steps, and `CHANGELOG.md`.
+
 
 ## Documentation
 

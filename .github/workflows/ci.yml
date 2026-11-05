@@ -80,3 +80,14 @@ jobs:
           name: docc
           path: docs-out
           if-no-files-found: error
+
+  scripts:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-15]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Release script tests
+        run: bash scripts/tests/release_notes_test.sh
