@@ -5,8 +5,8 @@ DocC documentation, snapshot tests and a SemVer Swift Package Manager release fl
 
 ## Status
 
-Tokens available: color roles (light/dark, contrast-tested), spacing, typography, radius.
-Components are not implemented yet. See the roadmap below.
+Available: color/spacing/typography/radius tokens, `VaneButtonStyle`, `VaneTextField`, `VaneBadge`.
+Card, list row and empty state are not implemented yet. See the roadmap below.
 
 ## Clean-room statement
 
