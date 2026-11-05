@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+/// Sizes shared by interactive components.
 public enum VaneSize {
     /// Minimum interactive target, in points.
     public static let minimumTapTarget: CGFloat = 44

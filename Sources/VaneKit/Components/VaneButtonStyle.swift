@@ -4,6 +4,7 @@
 
 import SwiftUI
 
+/// Visual variants of ``VaneButtonStyle``.
 public enum VaneButtonKind: CaseIterable, Sendable {
     case primary
     case secondary
