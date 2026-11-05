@@ -5,8 +5,9 @@ DocC documentation, snapshot tests and a SemVer Swift Package Manager release fl
 
 ## Status
 
-Available: color/spacing/typography/radius tokens, `VaneButtonStyle`, `VaneTextField`, `VaneBadge`.
-Card, list row and empty state are not implemented yet. See the roadmap below.
+Available: tokens (color, spacing, typography, radius) and components:
+`VaneButtonStyle`, `VaneTextField`, `VaneBadge`, `VaneCard`, `VaneListRow`, `VaneEmptyState`.
+Snapshot tests, DocC and the release flow are not implemented yet. See the roadmap below.
 
 ## Clean-room statement
 
