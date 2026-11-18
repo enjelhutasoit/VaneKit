@@ -9,15 +9,31 @@ struct VaneColoredBackground<S: InsettableShape>: ViewModifier {
     let shape: S
 
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.vaneTheme) private var theme
 
     func body(content: Content) -> some View {
         content
-            .foregroundStyle(VaneColor.color(colors.foreground, for: colorScheme))
-            .background(shape.fill(VaneColor.color(colors.background, for: colorScheme)))
+            .foregroundStyle(
+                theme.color(
+                    colors.foreground,
+                    for: colorScheme
+                )
+            )
+            .background(
+                shape.fill(
+                    theme.color(
+                        colors.background,
+                        for: colorScheme
+                    )
+                )
+            )
             .overlay {
                 if let border = colors.border {
                     shape.strokeBorder(
-                        VaneColor.color(border, for: colorScheme),
+                        theme.color(
+                            border,
+                            for: colorScheme
+                        ),
                         lineWidth: VaneSize.borderWidth
                     )
                 }
@@ -26,7 +42,15 @@ struct VaneColoredBackground<S: InsettableShape>: ViewModifier {
 }
 
 extension View {
-    func vaneColors<S: InsettableShape>(_ colors: VaneComponentColors, in shape: S) -> some View {
-        modifier(VaneColoredBackground(colors: colors, shape: shape))
+    func vaneColors<S: InsettableShape>(
+        _ colors: VaneComponentColors,
+        in shape: S
+    ) -> some View {
+        modifier(
+            VaneColoredBackground(
+                colors: colors,
+                shape: shape
+            )
+        )
     }
 }
