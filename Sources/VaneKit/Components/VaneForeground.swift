@@ -8,14 +8,24 @@ struct VaneForeground: ViewModifier {
     let role: VaneColorRole
 
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.vaneTheme) private var theme
 
     func body(content: Content) -> some View {
-        content.foregroundStyle(VaneColor.color(role, for: colorScheme))
+        content.foregroundStyle(
+            theme.color(
+                role,
+                for: colorScheme
+            )
+        )
     }
 }
 
 extension View {
-    func vaneForeground(_ role: VaneColorRole) -> some View {
-        modifier(VaneForeground(role: role))
+    func vaneForeground(
+        _ role: VaneColorRole
+    ) -> some View {
+        modifier(
+            VaneForeground(role: role)
+        )
     }
 }
