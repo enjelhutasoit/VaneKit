@@ -65,6 +65,7 @@ import SwiftUI
 import VaneKit
 
 enum AppTheme {
+    @MainActor
     static let theme = VaneTheme(
         light: VaneThemePalette(
             background: .white,
