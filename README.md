@@ -20,7 +20,7 @@ VaneKit brings **semantic design tokens** and **reusable SwiftUI components** in
 
 | | Included |
 |---|---|
-| **Design tokens** | Semantic colors (light/dark), spacing, typography, corner radius |
+| **Design tokens** | Semantic colors, application-owned light/dark themes, spacing, typography, corner radius |
 | **Components** | `VaneButtonStyle`, `VaneTextField`, `VaneBadge`, `VaneCard`, `VaneListRow`, `VaneEmptyState` |
 | **Quality checks** | Contrast tests, iOS Simulator snapshot tests, DocC documentation |
 
@@ -62,9 +62,45 @@ struct ProfileView: View {
 
 Components accept caller-provided text; localize strings in your app. See the [adoption guide](Sources/VaneKit/VaneKit.docc/AdoptingVaneKit.md) for a complete example with semantic background colors.
 
+### Customize colors
+
+Starting with v1.1.0, applications can provide their own light
+and dark semantic color palettes.
+
+```swift
+import SwiftUI
+import VaneKit
+
+let appTheme = VaneTheme(
+    light: lightPalette,
+    dark: darkPalette
+)
+
+ContentView()
+    .vaneTheme(appTheme)
+```
+
+`lightPalette` and `darkPalette` are application-owned
+`VaneThemePalette` values.
+
+VaneKit components inherit the theme automatically.
+
+Custom themes are scoped to SwiftUI view hierarchies.
+They do not require global configuration or changes to
+component initializers.
+
+The built-in theme remains the default, so existing
+applications do not need to migrate.
+
+**Note:** Theme injection is available beginning with v1.1.0.
+Until publication, use the development branch for evaluation.
+
+See [Adopting VaneKit](Sources/VaneKit/VaneKit.docc/AdoptingVaneKit.md)
+for complete examples, semantic roles, and accessibility guidance.
+
 ## Documentation
 
-- [Adopting VaneKit](Sources/VaneKit/VaneKit.docc/AdoptingVaneKit.md) — installation, example, and rollout steps
+- [Adopting VaneKit](Sources/VaneKit/VaneKit.docc/AdoptingVaneKit.md) — installation, custom themes, migration, and integration
 - [Tokens](Sources/VaneKit/VaneKit.docc/Tokens.md) and [Components](Sources/VaneKit/VaneKit.docc/Components.md) — available building blocks
 - [Accessibility](Sources/VaneKit/VaneKit.docc/Accessibility.md) — accessibility decisions and coverage
 
